@@ -1,0 +1,175 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.nttdata.example</groupId>
+	<artifactId>script-project-demo</artifactId>
+	<version>3.0.20191120</version>
+	<packaging>jar</packaging>
+
+	<name>Script Project Demo</name>
+	<url>https://steps.everis.com/confluence/pages/viewpage.action?pageId=775717126</url>
+
+	<properties>		
+		<project.build.sourceEncoding>ISO_8859_1</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>ISO_8859_1</project.reporting.outputEncoding>		
+		
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<aspectj.version>1.8.10</aspectj.version>
+		<webdrivermanager.version>3.6.1</webdrivermanager.version>
+		<junit.version>4.12</junit.version>
+		<testng.version>6.14.3</testng.version>
+		<selenium.version>3.141.59</selenium.version>
+		<apache.poi.version>4.1.0</apache.poi.version>
+		<apache.poi.ooxml.version>4.1.0</apache.poi.ooxml.version>
+		<browsermob.version>2.1.5</browsermob.version>
+	</properties>
+
+	<dependencies>
+<!-- 		<dependency>
+			<groupId>com.everis.tyasta</groupId>
+			<artifactId>tyafwk</artifactId>
+			<version>3.0.3</version>
+		</dependency> -->
+	<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.6</version>
+	</dependency>
+	<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.5</version>
+		</dependency>	
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-remote-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-api</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${apache.poi.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${apache.poi.ooxml.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>${webdrivermanager.version}</version>
+		</dependency>
+
+		<dependency>
+        	<groupId>net.lightbody.bmp</groupId>
+        	<artifactId>browsermob-core</artifactId>
+        	<version>${browsermob.version}</version>    
+    	</dependency>
+    	
+    	<dependency>
+			<groupId>br.eti.kinoshita</groupId>
+			<artifactId>testlink-java-api</artifactId>
+			<version>1.9.19-0</version>
+		</dependency>
+		
+		<!-- PDF....................................... -->
+		<dependency>
+			<groupId>org.apache.pdfbox</groupId>
+			<artifactId>pdfbox</artifactId>
+			<version>2.0.15</version>
+		</dependency>
+		
+		<!-- ZIP -->
+		<dependency>
+			<groupId>net.lingala.zip4j</groupId>
+			<artifactId>zip4j</artifactId>
+			<version>2.1.4</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.github.jesg</groupId>
+			<artifactId>phantomjsdriver</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+		
+		<!-- JAVA REFLECTION -->
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>0.9.11</version>
+		</dependency>
+	    
+	</dependencies>
+ 	 <build>
+      <plugins>
+         <!-- Compiler plug-in -->
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.0</version>
+            <configuration>
+               <source>${maven.compiler.source}</source>
+               <target>${maven.compiler.target}</target>
+            </configuration>
+         </plugin>
+         <!-- Added Surefire Plugin configuration to execute tests -->
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.22.1</version>
+            <configuration>
+               <systemProperties>
+                  <browserName>${browser}</browserName>
+                  <WEBDRIVERURL>${WEBDRIVERURL}</WEBDRIVERURL>
+                  <prefix>${prefix}</prefix>
+                  <configDirectory>${configDirectory}</configDirectory>
+                  <ENVIRONMENT>${ENVIRONMENT}</ENVIRONMENT>
+                  <groups>${groups}</groups>
+                  <baseURL>${baseURL}</baseURL>
+               </systemProperties>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+</project>

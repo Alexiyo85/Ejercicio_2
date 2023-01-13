@@ -33,7 +33,7 @@ public class Base {
 	 * Realizamos la llamada del Webdriver
 	 */
 	public WebDriver chromeDriverConnection() {
-		System.setProperty("webdriver.chrome.driver", "C:\\Selenium_java\\driver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\ffernanf\\eclipse-workspace\\Ejercicio_2_git\\driver\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		return driver;
@@ -95,8 +95,10 @@ public class Base {
 		TakesScreenshot miScreen = ((TakesScreenshot) driver);
 		String directorio = System.getProperty("user.dir");
 			File DestinoArchivo = new File(directorio + "\\src\\Captura\\ "+nombre +"\\"+ getDate()+ "\\"+ contador  +"\\"+ paso +".png");
+			
 				File archivo = miScreen.getScreenshotAs(OutputType.FILE);
 				FileUtils.copyFile(archivo, DestinoArchivo);
+				System.out.println(DestinoArchivo);
 			
 		}
 

@@ -25,7 +25,7 @@ public class GooglePage extends Base {
 		waitSeconds(2);
 		click(espacioBuscador, driver);
 		waitSeconds(2);
-			type("AutomatizaciÃ³n", espacioBuscador, driver);
+			type("Automatización", espacioBuscador, driver);
 			waitSeconds(3);
 			
 			click(BuscarGoogle, driver);		
