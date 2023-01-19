@@ -33,7 +33,7 @@ public class Base {
 	 * Realizamos la llamada del Webdriver
 	 */
 	public WebDriver chromeDriverConnection() {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\ffernanf\\eclipse-workspace\\Ejercicio_2_git\\driver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\driver\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		return driver;
